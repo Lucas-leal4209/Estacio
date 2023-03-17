@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static class ContaBanco{
+        int CPF;
+        int nconta;
+        double saldo;
+    
+    public double sacar(int saque){
+        double resultado;
+        resultado=saldo-saque;
+        System.out.println("\nSaque realizado.\n");
+        return resultado;
+        
+    }
+    public double depositar(int deposito){
+        double resultado;
+        resultado=saldo+deposito;
+        System.out.println("\nDeposito realizado.\n");
+        return resultado;
+    }
+}
+    public static void main(String[] args) {
+        ContaBanco conta1 = new ContaBanco();
+        double resul_saque, resul_depos;
+        
+        conta1.CPF=123456;
+        conta1.nconta=569;
+        conta1.saldo=2500;
+        
+        System.out.printf("\nQuanto deseja sacar?\n");
+        int saque;
+        Scanner x;
+        x=new Scanner(System.in);
+        saque = x.nextInt();
+        resul_saque = conta1.sacar(saque);
+        System.out.printf("\nNovo valor do saldo: %f\n",resul_saque);
+        
+         System.out.printf("\nQuanto deseja depositar?\n");
+        int deposito;
+        Scanner y;
+        y=new Scanner(System.in);
+        deposito = y.nextInt();
+        
+        resul_depos = conta1.depositar(deposito);
+        System.out.printf("\nNovo valor do saldo: %f\n",resul_depos);
+        
+    }
+}
