@@ -1,0 +1,55 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int somar(int num1,int num2){
+    int soma=num1+num2;
+    printf("A soma de %d e %d vale %d.\n",num1,num2,soma);
+}
+
+int subtrair(int num1,int num2){
+    int diferenca=num1-num2;
+    if(diferenca<0){
+        diferenca=diferenca*-1;
+    }
+    printf("A diferença de %d e %d vale %d.\n",num1,num2,diferenca);
+}
+
+double multiplicar(int num1,int num2){
+    double produto=num1*num2;
+    printf("O produto de %d e %d vale %.f.\n",num1,num2,produto);
+}
+
+float divisao(float num1, float num2){
+    float razao=num1/num2;
+    printf("A razão entre %.f e %.f vale %.f.\n",num1,num2,razao);
+}
+
+int main (){
+    int valor1, valor2, opcao;
+    printf("Escolha a operação:\n1)Soma\n2)Subtração\n3)Multiplicação\n4)Divisão\n");
+    scanf("%d",&opcao);
+    printf("Insira dois valores:\n");
+    scanf("%d %d",&valor1,&valor2);
+    if (valor1<=0 ||valor2<=0){
+        printf("Valores inválidos. Somente números inteiros positivos.");
+    }
+    else{
+    switch (opcao){
+        case 1:
+        somar(valor1,valor2);
+        break;
+        
+        case 2:
+        subtrair(valor1,valor2);
+        break;
+        
+        case 3:
+        multiplicar(valor1,valor2);
+        break;
+        
+        case 4:
+        divisao(valor1,valor2);
+        break;
+    }   
+    return 0;
+}}
