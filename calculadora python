@@ -1,0 +1,67 @@
+import math  
+print("Bem vindo à sua calculadora pseudocientífica!") #introdução  
+escolha=int(input("Informe a função matemática que deseje realizar:\n1)Aritmética\n2)Fatorial\n3)Exponencial\n4)Raiz Quadrada\n5)Fatoração\n\n")) # opções de operação  
+if escolha == 1:  
+    operacao=int(input("\nInforme a operação a ser realizada:\n1)Soma\n2)Subtração\n3)Multiplicação\n4)Divisão\n5)Média Aritmética\n")) #opções aritméticas  
+    if operacao == 1: #soma  
+        valor1=int(input("informe o primeiro número: "))  
+        valor2=int(input("informe o segundo número: "))  
+        soma=valor1+valor2  
+        print("A soma de",valor1, "+",valor2,"vale:",soma)  
+    if operacao == 2: #subtração  
+        valor1=int(input("informe o primeiro número: "))  
+        valor2=int(input("informe o segundo número: "))  
+        subt=valor1-valor2  
+        if subt<0:  
+            subt=subt*-1  
+        print("A diferença entre",valor1, "e",valor2,"vale:",subt)  
+    if operacao == 3: #multiplicação  
+        valor1=int(input("informe o primeiro número: "))  
+        valor2=int(input("informe o segundo número: "))  
+        mult=valor1*valor2  
+        print("O produto entre",valor1, "e",valor2,"vale:",mult)  
+    if operacao == 4: #divisão (o melhor que eu pude)  
+        valor1=int(input("informe o primeiro número: "))  
+        valor2=int(input("informe o segundo número: "))  
+        fr1=valor1/valor2  
+        print("A razão entre",valor1,"e",valor2,"vale:",valor1,"/",valor2,"ou",fr1)  
+    if operacao == 5: #média, não finalizado por motivos de preguiça
+            print("finalize a média com 0") 
+            valor=int(input("informe o valor diferente de 0\n")) 
+            while valor!=0: 
+                valor=int(input("informe o valor diferente de 0\n")) 
+                valor=valor+valor 
+            i=int=0 
+            i=i+1 
+            print(valor) 
+if escolha == 2: #fatorial com função pq era aula  
+        valor=int(input("Informe um número: "))  
+        fatorial=math.factorial(valor)  
+        print("O fatorial de",valor,"vale",fatorial)  
+if escolha == 3: #** quer dizer ^  
+    base=float(input("Informe a base: "))  
+    expoente=float(input("Informe o exponte: "))  
+    exp=base ** expoente  
+    print(base,"elevado à",expoente,"ª potência vale:", exp)  
+if escolha == 4: #raiz com função pq sim  
+    radicando=float(input("Informe o número a ser extraído da raiz: "))  
+    raiz=math.sqrt(radicando)  
+    print("A raiz quadrada de",radicando,"vale",raiz)  
+if escolha == 5: #fatoração sem função mas incompleto, pra cada primo tinha que adicionar um if else  
+    base=float(input("Informe a base:"))  
+    while(base>1):  
+        if (base%2==0):  
+            base=base/2  
+            print(base)  
+        else:  
+            if(base%3==0):  
+                base=base/3  
+                print(base)  
+            else:  
+                if(base%5==0):  
+                    base=base/5  
+                    print(base)  
+                else:  
+                    if(base%7==0):  
+                        base=base/7  
+                        print(base)
