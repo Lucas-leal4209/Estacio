@@ -1,0 +1,22 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+void trocaValor(int a, char b){
+    int *ponteiro1=20;
+    char *ponteiro2="João";
+    a = &ponteiro1;
+    b = &ponteiro2;
+    printf("Depois da função:\nNúmero: %d\nNome: %s\n",ponteiro1,ponteiro2);
+}
+
+int main() {
+    int numero;
+    char nome[20];
+    printf("Informe um número e um nome:\n");
+    scanf("%d %s",&numero,&nome);
+    printf("Antes da função:\nNúmero: %d\nNome: %s\n",numero,nome);
+    trocaValor(numero,nome);
+    
+    return 0;
+}
