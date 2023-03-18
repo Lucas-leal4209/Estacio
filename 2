@@ -1,0 +1,23 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void calcular(int numero){
+    if (numero==0){
+        printf("nulo");
+    }
+    else if(numero<0){
+        printf("negativo");
+    }
+    else if(numero>0){
+        printf("positivo");
+    }
+}
+
+int main() {
+    int numero;
+    printf("informe:");
+    scanf("%d",&numero);
+    calcular(numero);
+
+    return 0;
+}
