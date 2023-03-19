@@ -1,0 +1,18 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void dobrar(int A, int B){
+    A=2*A;
+    B=2*B;
+    printf("Dobro dos valores: %d e %d",A,B);
+}
+
+int main() {
+    int A, B;
+    printf("Informe os valores de A e B:\n");
+    scanf("%d %d",&A,&B);
+    printf("Valores originais: %d e %d\n",A,B);
+    dobrar(A,B);
+    
+    return 0;
+}
