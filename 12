@@ -1,0 +1,24 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int somaDiagonal(int matriz[3][3]){
+    int soma=0;
+    for (int i=0;i<3;i++){
+        soma=soma+matriz[i][i];
+    }
+    return soma;
+}
+
+int main() {
+    int matriz[3][3];
+    int soma;
+    printf("Informe os valores da matriz:\n");
+    for (int i=0;i<3;i++){
+        for (int j=0;j<3;j++){
+            scanf("%d",&matriz[i][j]);
+        }
+    }
+    soma=somaDiagonal(matriz);
+    printf("Soma da diagonal = %d",soma);
+    return 0;
+}
