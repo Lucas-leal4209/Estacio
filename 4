@@ -1,0 +1,34 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void repetidor(int i){
+    if (i%2==0){
+        printf("%d\n",i);
+    }
+}
+
+int main() {
+    int escolha;
+    int i;
+    printf("Informe a iteração desejada:\n1)For\n2)While\n3)Do-While\n");
+    scanf("%d",&escolha);
+    switch (escolha){
+    case 1:
+        for (i=0;i<=100;i++){
+            repetidor(i);
+            break;
+        }
+    case 2:
+        while(i<101){
+            i++;
+            repetidor(i);
+        }
+    case 3:
+        do {
+            repetidor(i);
+            i++;
+        }
+        while(i<=100);
+        }
+    return 0;
+}
