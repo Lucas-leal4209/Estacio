@@ -1,0 +1,46 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void soma(int a, int b){
+    int resultado;
+    resultado=a+b;
+    printf("Soma=%d\n",resultado);
+}
+
+void diferenca(int a, int b){
+    int resultado;
+    resultado=a-b;
+    if (resultado<0){
+        resultado=resultado*-1;
+    }
+    printf("Diferença=%d\n",resultado);
+}
+void multiplica(int a, int b){
+    int resultado;
+    resultado=a*b;
+    printf("Produto=%d\n",resultado);
+}
+void divisao(float a, float b){
+    float resultado;
+    resultado=a/b;
+    printf("Razão=%.f\n",resultado);
+}
+
+int main() {
+    int num1, num2;
+    printf("Informe dois valores:\n");
+    scanf("%d%d",&num1,&num2);
+    if (num1<=0||num2<=0){
+        printf("Erro! Valores inválidos");
+    }
+    else {
+        printf("\n");
+    soma(num1,num2);
+    diferenca(num1,num2);
+    multiplica(num1,num2);
+    divisao(num1,num2);
+    }
+    
+
+    return 0;
+}
