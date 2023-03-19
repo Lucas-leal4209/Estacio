@@ -1,0 +1,20 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void verificaIdade(int idade){
+    if (idade>=18&&idade<=60){
+        printf("Está apto a doar.");
+    }
+    else printf("Não está apto a doar.");
+}
+
+int main() {
+    int idade;
+    char nome[20];
+    printf("Olá, informe seu nome e idade:\n");
+    scanf("%s %d",&nome,&idade);
+    printf("Perfil:\nNome:%s\nIdade:%d\n",nome,idade);
+    verificaIdade(idade);
+
+    return 0;
+}
