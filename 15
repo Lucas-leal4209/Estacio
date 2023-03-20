@@ -1,0 +1,28 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Produto{
+    int codigo;
+    char nome[15];
+    int quantidade;
+    float preco;
+};
+
+int main() {
+    struct Produto produto;
+    printf("---------Estoque do Mercado---------\n\n");
+    for(int i=1;i<=5;i++){
+        printf("Código do produto: ");
+        scanf("%d",&produto.codigo);
+        printf("Nome do produto: ");
+        scanf("%s",produto.nome);
+        printf("Quantidade de produtos: ");
+        scanf("%d",&produto.quantidade);
+        printf("Preço do produto: ");
+        scanf("%f",&produto.preco);
+        printf("Nome: %s\nCódigo: %d\nQuantidade: %d\nPreço: R$%.2f",produto.nome,produto.codigo,produto.quantidade,produto.preco);
+        printf("\n\n");
+    }
+
+    return 0;
+}
