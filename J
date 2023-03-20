@@ -1,0 +1,28 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int vetor[100];
+    int tamanho,temporario;
+    printf("Informe o tamanho do vetor: ");
+    scanf("%d",&tamanho);
+    for (int i=0;i<tamanho;i++){
+        printf("Insira um valor no vetor: ");
+        scanf("%d",&vetor[i]);
+    }
+    for (int i=0;i<tamanho;i++){
+        for (int j=i+1;j<tamanho;j++){
+            if(vetor[i]>vetor[j]){
+            temporario=vetor[i];
+            vetor[i]=vetor[j];
+            vetor[j]=temporario;
+        }
+    }
+}   
+    printf("Ordem crescente: ");
+    for(int i=0;i<tamanho;i++){
+    printf("%d ",vetor[i]);
+}
+    
+    return 0;
+}
