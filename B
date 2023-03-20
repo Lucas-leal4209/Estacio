@@ -1,0 +1,20 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int vetor[10];
+    for (int i=1;i<=10;i++){
+        printf("Informe um valor a ser inserido no vetor: ");
+        scanf("%d",&vetor[i]);
+    }
+    printf("Vetor normal:\n");
+    for (int i=1;i<=10;i++){
+        printf("%d\n",vetor[i]);
+    }
+    printf("Vetor quadrado:\n");
+    for (int i=1;i<=10;i++){
+        printf("%d\n",vetor[i]*vetor[i]);
+    }
+
+    return 0;
+}
