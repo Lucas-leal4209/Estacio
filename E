@@ -8,9 +8,9 @@ int main() {
         printf("Informe um valor: ");
         scanf("%lf",&vetor[i]);
     }
-    for (int i = 1; i < 10; ++i){
+    for (int i=1;i<=10;i++){
         if (vetor[temporario] < vetor[i])
-    temporario=i;
+        temporario=i;
     }
     
     printf("maior número: %.f",vetor[temporario]);
