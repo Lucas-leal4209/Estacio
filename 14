@@ -1,0 +1,25 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+struct Ficha{
+    char nome[20];
+    float altura;
+    int idade;
+};
+
+int main() {
+    struct Ficha pessoa;
+    
+    printf("Informe seu nome: ");
+    scanf("%s",pessoa.nome);
+    printf("Informe sua idade: ");
+    scanf("%d",&pessoa.idade);
+    printf("Informe sua altura: ");
+    scanf("%f",&pessoa.altura);
+    if (pessoa.idade>=18&&pessoa.altura>=1.7){
+        printf("Você está apto a competir.");
+    } else{
+        printf("Você não está apto a competir.");
+    }
+    return 0;
+}
