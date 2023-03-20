@@ -1,0 +1,23 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int vetor[4];
+    int contador;
+    int soma=0;
+    for (int i=1;i<=4;i++){
+        printf("Informe um valor: ");
+        scanf("%d",&vetor[i]);
+        
+        if (vetor[i]<0){
+            contador++;
+        }
+        
+        soma=soma+vetor[i];
+    }
+    
+    printf("Existem %d números negativos no vetor.\n",contador);
+    printf("Soma dos positivos do vetor: %d",soma);
+
+    return 0;
+}
