@@ -1,0 +1,24 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int vetor[10];
+    int contador;
+    for (int i=1;i<=10;i++){
+        printf("Informe um valor a ser inserido no vetor: ");
+        scanf("%d",&vetor[i]);
+    }
+    for (int i=1;i<=10;i++){
+        if(vetor[i]%2==0){
+            contador++;
+        }
+    }
+    printf("Existem %d pares no vetor.\n",contador);
+    for (int i=1;i<=10;i++){
+        if(vetor[i]%2==0){
+            printf("%d",vetor[10]);
+        }
+    }
+
+    return 0;
+}
