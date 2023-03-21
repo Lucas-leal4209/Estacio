@@ -1,0 +1,43 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+float somarLinha(int matriz[4][4], int linha) {
+    int soma=0;
+    int media;
+    for (int j=0;j<4;j++) {
+        soma=soma+matriz[linha][j];
+    }
+    media=soma/4;
+    return media;
+}
+
+float somarColuna(int matriz[4][4], int coluna) {
+    int soma=0;
+    int media;
+    for (int i=0;i<4;i++) {
+        soma=soma+matriz[i][coluna];
+    }
+    media=soma/4;
+    return media;
+}
+
+int main() {
+    int i,j;
+    int matriz[4][4];
+    printf("Informe os valores da matriz:\n");
+    for (i=0;i<4;i++){
+        for (j=0;j<4;j++){
+            scanf("%d",&matriz[i][j]);
+        }
+    }
+    for (i=0;i<4;i++){
+            float media=somarLinha(matriz,i);
+            printf("Média linha %d: %2f\n",i+1,media);
+        }
+    printf("\n");
+    for (j=0;j<4;j++){
+        float media=somarColuna(matriz,j);
+        printf("Média coluna %d: %2f\n",j+1,media);
+    }
+    return 0;
+}
