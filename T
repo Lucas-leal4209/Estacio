@@ -1,0 +1,30 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int matrizA[3][3];
+    int matrizB[3][3]; 
+
+    printf("Digite os elementos da matriz A:\n");
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++) {
+            scanf("%d", &matrizA[i][j]);
+        }
+    }
+
+    for(int i=0;i<3;i++) {
+      for(int j=0;j<3;j++) {
+         matrizB[i][j] = matrizA[j][i];
+      }
+   }
+
+    printf("Matriz Transposta:\n");
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++) {
+            printf("%d ", matrizB[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
