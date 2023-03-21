@@ -1,0 +1,30 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int distancia_hamming(int *vetor1, int *vetor2, int tamanho) {
+    int distancia=0;
+    for (int i=0;i<tamanho;i++) {
+        if (vetor1[i]!=vetor2[i]) {
+            distancia++;
+        }
+    }
+    return distancia;
+    }
+
+int main() {
+    int tamanho,distancia;
+    int vetor1[tamanho], vetor2[tamanho];
+    printf("Informe o tamanho dos vetores: ");
+    scanf("%d", &tamanho);
+    printf("Insira elementos no primeiro vetor: ");
+    for (int i=0;i<tamanho;i++) {
+        scanf("%d", &vetor1[i]);
+    }
+    printf("Insira elementos no segundo vetor: ");
+    for (int i=0;i<tamanho;i++) {
+        scanf("%d", &vetor2[i]);
+    }
+    distancia = distancia_hamming(vetor1, vetor2, tamanho);
+    printf("A distância de Hamming entre os vetores é %d.\n", distancia);
+    return 0;
+}
