@@ -1,0 +1,23 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int mat[3][3];
+    int acima=0, abaixo=0, diagonal=0;
+
+    printf("Digite os elementos da matriz:\n");
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            scanf("%d", &mat[i][j]);
+            if (i<j) acima = acima + mat[i][j];
+            else if (i>j) abaixo = abaixo + mat[i][j];
+            else diagonal = diagonal + mat[i][j];
+        }
+    }
+
+    printf("Soma acima da diagonal: %d\n", acima);
+    printf("Soma abaixo da diagonal: %d\n", abaixo);
+    printf("Soma diagonal principal: %d\n", diagonal);
+
+    return 0;
+}
