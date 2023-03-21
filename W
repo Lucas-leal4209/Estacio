@@ -1,0 +1,35 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int matriz[100][100];
+    int linhas,colunas,soma;
+    int i,j;
+    printf("Informe o número de linhas e colunas da matriz: ");
+    scanf("%d %d",&linhas,&colunas);
+    
+    printf("Insira elementos na matriz: ");
+    for (i=0;i<linhas;i++){
+        for (j=0;j<colunas;j++){
+            scanf("%d",&matriz[i][j]);
+        }
+    }
+    
+    for (i=0;i<linhas;i++){
+        soma=0;
+        for (j=0;j<colunas;j++){
+            soma=soma+matriz[i][j];
+        }
+        printf("Soma da linha %d = %d.\n",i+1,soma);
+    }
+    printf("\n");
+    for (j=0;j<colunas;j++){
+        soma=0;
+        for (i=0;i<linhas;i++){
+            soma=soma+matriz[i][j];
+        }
+        printf("Soma da linha %d = %d.\n",j+1,soma);
+    }
+    
+    return 0;
+}
