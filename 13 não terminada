@@ -6,22 +6,31 @@ typedef struct Data{
     int diaNascimento;
     int mesNascimento;
     int anoNascimento;
+
+    int diaAtual;
+    int mesAtual;
+    int anoAtual;
 };
 int main() {
     struct Data pessoa;
     int totalDias;
 
+    printf("Informe o dia de hoje: ");
+    scanf("%d",&diaAtual);
+    printf("Informe o mês atual: ");
+    
+
     for(int i=1;i<=5;i++){
         printf("Informe sua data de nascimento:\n");
         printf("Dia: ");
-        scanf("%d",&pessoa.dia);
+        scanf("%d",&pessoa.diaNascimento);
         printf("\n");
         printf("Mês: ");
-        scanf("%d",&pessoa.mes);
+        scanf("%d",&pessoa.mesNascimento);
         printf("\n");
         printf("Ano: ");
-        scanf("%d",&pessoa.ano);
-        totalDias=pessoa.dia+pessoa.mes*30+(2023-pessoa.ano)*365;
+        scanf("%d",&pessoa.anoNascimento);
+         totalDias=pessoa.dia+pessoa.mes*30+(2023-pessoa.ano)*365;
         printf("Pessoa %d nasceu há %d dias.\n",i,totalDias);
 }   
     return 0;
