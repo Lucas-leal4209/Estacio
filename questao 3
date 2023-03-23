@@ -1,0 +1,20 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+//questão 3
+int calculaIdade(int idade){
+    int nascimento;
+    nascimento=2023-idade;
+    return nascimento;
+}
+
+int main() {
+    int idade,nascimento;
+    char nome[15];
+    printf("Olá. Informe seu nome e sua idade: \n");
+    scanf("%s %d",nome,&idade);
+    nascimento=calculaIdade(idade);
+    printf("Olá %s, nascido em %d, com %d anos.",nome,nascimento,idade);
+
+    return 0;
+}
