@@ -1,0 +1,24 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <time.h>
+//questão 1
+typedef struct Tm{
+    int tm_mday;
+    int tm_mon;
+    int tm_year;
+};
+
+int main() {
+    struct Tm tm;
+    printf("Informe o dia de hoje:\n");
+    scanf("%d",&tm.tm_mday);
+    printf("Informe o mes atual:\n");
+    scanf("%d",&tm.tm_mon);
+    printf("Informe o ano atual:\n");
+    scanf("%d",&tm.tm_year);
+    
+    
+    printf("Data de hoje: %d/%d/%d",tm.tm_mday,tm.tm_mon,tm.tm_year);
+
+    return 0;
+}
