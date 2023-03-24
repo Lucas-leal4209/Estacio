@@ -1,0 +1,59 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+public class Pessoa {
+    private String nome;
+    private int nascimento;
+    private double peso;
+    private String escolaridade;
+    
+    
+    
+    public void setNome(String nome){
+        this.nome=nome;
+    }
+    public void setNascimento(int nascimento){
+        this.nascimento=nascimento;
+    }
+    public void setPeso(double peso){
+        this.peso=peso;
+    }
+    public void setEscolaridade(String escolaridade){
+        this.escolaridade=escolaridade;
+    }
+    
+    
+    
+    public String getNome(){
+        return this.nome;
+    }
+    public int getNascimento(){
+        return this.nascimento;
+    }
+    public double getPeso(){
+        return this.peso;
+    }
+    
+    
+    
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        Pessoa pessoas[] = new Pessoa[3];
+        
+    for (int i=0;i<pessoas.lenght;i++);{
+        pessoas[i] = new Pessoa();
+    }
+    for (int i=0;i<pessoas.lenght;i++);{
+        System.out.printf("---Ficha da pessoa %d---\n",i+1);
+        System.out.printf("Informe o nome da pessoa: ");
+        pessoas[i].setNome(ler.next());
+        System.out.printf("Informe a data de nascimento: ");
+        pessoas[i].setNascimento(ler.nextInt());
+        System.out.printf("Informe o peso: ");
+        pessoas[i].setPeso(ler.nextDouble());
+        System.out.printf("Informe a escolaridade: ");
+        pessoas[i].setEscolaridade(ler.next());
+    }
+        System.out.println("Hello, World!");
+    }
+}
