@@ -1,0 +1,62 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct item {
+    int conteudo;
+    struct item *proximo;
+} Item;
+
+void inserir(Item **cabeca){
+    Item *itemATUAL, *itemNOVO;
+    int numero;
+    
+    printf("Informe o Item:");
+    scanf("%d",&numero);
+    
+    if (*cabeca == NULL){
+        *cabeca = (Item *) malloc(sizeof(Item));
+        (*cabeca)->conteudo = numero;
+        (*cabeca)->proximo = NULL;
+    }else{
+        itemATUAL = *cabeca;
+        while (itemATUAL->proximo != NULL)
+        itemATUAL = itemATUAL->proximo;
+    itemNOVO = (Item *)malloc(sizeof(Item));
+    itemNOVO->conteudo = numero;
+    itemNOVO->proximo = NULL;
+    itemATUAL->proximo = itemNOVO;
+    }
+}
+
+void imprimir(Item *itemATUAL){
+    int i=0;
+    while (itemATUAL != NULL){
+        printf("Item: %d ",itemATUAL->conteudo);
+        itemATUAL = itemATUAL->proximo;
+    }
+}
+
+
+int main() {
+    int opcao;
+    Item *cabeca = NULL;
+    
+    do {
+        printf("\n--Opções--");
+        printf("\n1 -> Inserir novo Item");
+        printf("\n2 -> Imprimir os Itens");
+        printf("\n0 -> Sair");
+        scanf("%d",&opcao);
+        
+        switch(opcao){
+            case 1: inserir(&cabeca); break;
+            case 2: imprimir(cabeca); break;
+            case 0: break;
+            default: printf("\n\nOpção Inválida");
+        }
+        fflush(stdin);
+    } while (opcao != 0);
+
+    return 0;
+}
