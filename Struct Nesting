@@ -1,0 +1,36 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Data{
+        int dia;
+        int mes;
+        int ano;
+};
+
+typedef struct Pessoa{
+    char nome[10];
+    int idade;
+    struct Data;
+};
+
+
+int main() {
+    struct Pessoa pessoa;
+    struct Data data;
+    for(int i=0;i<10;i++){
+        printf("Pessoa %d informe seu nome: \n",i+1);
+        scanf("%s",&pessoa.nome);
+        printf("Informe sua idade: \n");
+        scanf("%d",&pessoa.idade);
+        
+        printf("Informe sua data de nascimento no formato dd/mm/yyyy:\n");
+        scanf("%d %d %d",&data.dia,&data.mes,&data.ano);
+        printf("\n");
+        printf(" Nome:%s\nIdade:%d\nData de nascimento:\n%d/%d/%d\n",pessoa.nome,pessoa.idade,data.dia,data.mes,data.ano);
+        printf("\n");
+    }
+    
+
+    return 0;
+}
