@@ -1,0 +1,76 @@
+#include <string.h>
+
+void concatenar(char* linhaA, const char* linhaB){
+    strcat(linhaA,linhaB);
+    printf("Concatenação: %s",linhaA);
+}
+
+void copiar(char* linhaA, const char* linhaB){
+    strcpy(linhaA,linhaB);
+    printf("Cópia: %s\n",linhaA);
+}
+
+void comparar(char* linhaA, const char* linhaB){
+    printf("Comparação: %d\n",strcmp(linhaA,linhaB));
+}
+
+void compararTamanho(char* linhaA, const char* linhaB){
+    size_t num = 50;
+    printf("Comparação do tamanho: %d\n",strncmp(linhaA,linhaB,num));
+}
+
+void tamanho(char* linhaA, const char* linhaB){
+    printf("Tamanho da linha A: %ld\n",strlen(linhaA));
+    printf("Tamanho da linha B: %ld\n",strlen(linhaB));
+}
+
+
+
+
+
+
+
+#include <stdio.h>
+#include "texto.h"
+
+int main()
+{
+    char linhaA[100];
+    char linhaB[100];
+    
+    int escolha;
+    // Write C code here
+    printf("Insira a linha A:\n");
+    scanf("%s",linhaA);
+    
+    printf("Insira a linha B:\n");
+    scanf("%s",linhaB);
+    
+    printf("Escolha a função desejada.\n1)Concatenação\n2)Copiar\n3)Comparar\n4)Comparar tamanho\n5)Tamanho das strings\n");
+    scanf("%d",&escolha);
+    
+    switch (escolha){
+        case 1:
+        concatenar(linhaA,linhaB);
+        break;
+        
+        case 2:
+        copiar(linhaA,linhaB);
+        break;
+        
+        case 3:
+        comparar(linhaA,linhaB);
+        break;
+        
+        case 4:
+        compararTamanho(linhaA,linhaB);
+        break;
+        
+        case 5:
+        tamanho(linhaA,linhaB);
+        break;
+    }
+    
+    
+    return 0;
+}
