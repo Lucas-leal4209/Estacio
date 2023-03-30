@@ -19,3 +19,29 @@ int main() {
 
     return 0;
 }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+^^^^^^rascunho^^^^^^
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <time.h>
+
+void converterData(struct tm tempo){
+    int dia, mes, ano;
+    tempo.tm_mday=dia;
+    tempo.tm_mon=mes;
+    tempo.tm_year=ano;
+    
+};
+
+int main() {
+    struct tm *data;
+    time_t dia;
+    time(&dia);
+    data=localtime(&dia);
+    
+    printf("data: %d/%d/%d",data->tm_mday,data->tm_mon+1,data->tm_year+1900);
+    
+    return 0;
+}
