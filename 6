@@ -1,19 +1,20 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 
 int main() {
-    FILE *arquivo1, *arquivo2;
+    FILE *arquivo1, *arquivo2; //ponteiros para os arquivos
     char ch;
-    arquivo1 = fopen("arquivo1.txt","r");
-    arquivo2 = fopen("arquivo2.txt","w");
-    if(arquivo1==NULL||arquivo2==NULL){
+    
+    arquivo1 = fopen("arquivo1.txt","r"); //abre o arquivo 1 em modo de leitura
+    arquivo2 = fopen("arquivo2.txt","w"); // abre o arquivo 2 em modo de escrita
+    
+    if(arquivo1==NULL||arquivo2==NULL){ // erro se o arquivo 1 estiver vazio
         printf("Erro");
         return 1;
     }
-    while(ch = fgetc(arquivo1) != EOF){
+    while ((ch = fgetc(arquivo1)) != EOF) { // escreve no arquivo 2 o conteúdo do arquivo 1 enquanto este não for o EOF
         fputc(ch, arquivo2);
     }
-    fclose(arquivo1);
+    fclose(arquivo1); //fecha os arquivos
     fclose(arquivo2);
 
     return 0;
