@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *arquivo = fopen("arquivo.txt","w");
+    if(arquivo==NULL){
+        printf("Error not found\n");
+        return 1;
+    }
+    fprintf(arquivo,"Texto a ser escrito.");
+    fclose(arquivo);
+
+    return 0;
+}
