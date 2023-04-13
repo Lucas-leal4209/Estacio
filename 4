@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
 
 int main() {
-    char linhaA[50];
-    printf("Alimente a string com caracteres:\n");
-    fgets(linhaA,50,stdin);
-    printf("%s",linhaA);
-    printf("%lu",strlen(linhaA)-1);
+    char linha[50];
+    printf("Digite a string:\n");
+    fgets(linha,50,stdin);
+    
+    printf("Essa string possui %lu caracteres incluindo espaços e acentos.", strlen(linha)-1);
     return 0;
 }
