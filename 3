@@ -7,13 +7,13 @@ int main() {
     time_t horaAtual, horaFutura;
     int segundos;
     
-    printf("Informe a quantidade de segundos:\n");
+    printf("Informe a quantidade de segundos:\n"); // pede o número de segundos ao usuário
     scanf("%d",&segundos);
 
-    time(&horaAtual);
-    horaFutura=horaAtual+segundos;
+    time(&horaAtual); // obtém a hora do sistema
+    horaFutura=horaAtual+segundos; // soma a hora do sistema com os segundos pedidos
     
-    struct tm *tempoFuturo = localtime(&horaFutura);
+    struct tm *tempoFuturo = localtime(&horaFutura); // transforma a hora futura numa struct
     printf("Data daqui a %d segundos: %02d/%02d/%02d %02d:%02d:%02d.\n",segundos, tempoFuturo->tm_mday,tempoFuturo->tm_mon+1,tempoFuturo->tm_year+1900,tempoFuturo->tm_hour,tempoFuturo->tm_min,tempoFuturo->tm_sec);
     return 0;
 }
