@@ -1,0 +1,20 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    FILE *arquivo1, *arquivo2;
+    char ch;
+    arquivo1 = fopen("arquivo1.txt","r");
+    arquivo2 = fopen("arquivo2.txt","w");
+    if(arquivo1==NULL||arquivo2==NULL){
+        printf("Erro");
+        return 1;
+    }
+    while(ch = fgetc(arquivo1) != EOF){
+        fputc(ch, arquivo2);
+    }
+    fclose(arquivo1);
+    fclose(arquivo2);
+
+    return 0;
+}
