@@ -1,0 +1,45 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Pessoa{
+    char nome[30];
+    int idade;
+    float altura;
+}Pessoa;
+
+void maiorIdade(Pessoa pessoa){
+    if (pessoa.idade>=18){
+        printf("%s é maior de idade.",pessoa.nome);
+    }
+}
+
+void gincana(Pessoa pessoa){
+    if(pessoa.idade>20&&pessoa.altura>1.8){
+        printf("%s está apto para a gincana.",pessoa.nome);
+    }
+}
+
+int main() {
+    struct Pessoa pessoa[10];
+    for (int i=0;i<10;i++){
+        printf("Informe o nome da %dª pessoa: ",i+1);
+        scanf("%s",pessoa[i].nome);
+        
+        printf("Informe a idade da %dª pessoa: ",i+1);
+        scanf("%d",&pessoa[i].idade);
+        
+        printf("Informe a altura da %dª pessoa: ",i+1);
+        scanf("%f",&pessoa[i].altura);
+        
+        printf("\n");
+    }
+    
+    printf("\n");
+    for (int i=0;i<10;i++){
+        maiorIdade(pessoa[i]);
+        gincana(pessoa[i]);
+        printf("\n");
+    }
+    
+    return 0;
+}
