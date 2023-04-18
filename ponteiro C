@@ -1,0 +1,26 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Pessoa{
+    char nome[50];
+    int idade;
+    float altura;
+}Pessoa;
+
+int main() {
+    struct Pessoa pessoa;
+    struct Pessoa* p1 = &pessoa;
+    
+    printf("Informe o nome da pessoa:\n");
+    scanf("%s",&(p1->nome));
+    
+    printf("Informe a idade da pessoa: ");
+    scanf("%d",&(p1->idade));
+    
+    printf("Informe a altura da pessoa:\n");
+    scanf("%f",&(p1->altura));
+    
+    printf("%s\n%d\n%.2f\n", p1->nome, p1->idade, p1->altura);
+
+    return 0;
+}
