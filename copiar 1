@@ -1,0 +1,28 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    
+    char linha1[5+1];
+    char linha2[100];
+    
+    printf("Alimente a string 1 com 5 caracteres: ");
+    scanf("%s",linha1);
+    
+    printf("Alimente a string 2: ");
+    scanf("%s",linha2);
+    
+    if(strcmp(linha1,linha2)==0){
+        printf("As strings são iguais.");
+    } else{
+        printf("As strings são diferentes.");
+    }
+    printf("\n");
+    if(strlen(linha1)==strlen(linha2)){
+        printf("As strings possuem o mesmo tamanho.");
+    } else{
+        printf("As strings possuem tamanhos diferentes.");
+    }
+
+    return 0;
+}
