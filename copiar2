@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    FILE *ponteiro;
+    char filename[100];
+    char nome[100] = "Lucas"; // Inicializa a string nome com o valor "Lucas"
+    char palavra[100]; // Variável para armazenar a palavra lida do arquivo
+    int contador = 0;
+
+    ponteiro = fopen("arquivo.txt", "r");
+
+    if (ponteiro == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    while (fscanf(ponteiro, "%s", palavra) != EOF) {
+        if (strcmp(palavra, nome) == 0) { // Compara a palavra lida do arquivo com a string nome
+            contador++;
+        }
+    }
+
+    printf("O arquivo contém %d vezes o nome %s.\n", contador, nome);
+
+    fclose(ponteiro);
+
+    return 0;
+}
