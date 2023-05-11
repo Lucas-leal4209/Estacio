@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <windows.h>
+int main() {
+    int idporta;
+    DCB confporta;
+    idporta = OpenComm("COM1",1024,128);
+    if (idporta < 0){
+        printf("Erro ao tentar abrir a porta COM1\n.");
+        return 1;
+    }
+    if (GetCommStare(idporta, &confporta)<0){
+        printf("Erro ao obter os valores dos parâmetros de configuração.\n");
+        return 2;
+    }
+    CloseComm(idporta);
+    return 0;
+}
