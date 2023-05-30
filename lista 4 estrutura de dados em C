@@ -1,0 +1,10 @@
+1.  o bubble sort percorre uma lista trocando elementos fora de ordem até a lista estar ordenada.
+o insertion sort constrói uma lista ordenada um elemento de cada vez em sua devida posição.
+2. insertion sort
+3. e
+4. d
+5. d
+6. d
+7. Pré ordem: 5, 2, 1, 3, 7, 6, 8
+Pós ordem: 1, 3, 2, 6, 8, 7, 5
+Ordem: 1, 2, 3, 5, 6, 7, 8
