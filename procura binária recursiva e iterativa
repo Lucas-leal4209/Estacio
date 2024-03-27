@@ -1,0 +1,63 @@
+#include <stdio.h>
+// recursiva
+int busca(int vet[], int inicio, int fim, int chave){
+    int meio;
+    if (inicio>fim){
+        return -1; // não encontrada
+    } else {
+        meio = (inicio+fim)/2;
+        if (vet[meio] == chave){ //procura chave no meio exato
+            return meio;
+        } else {
+            if (chave < vet[meio]){ //procura chave na metade inferior
+                return busca(vet, inicio, meio-1, chave);
+            } else { //procura chave na metade superior
+                return busca(vet, meio+1, fim, chave);
+            }
+        }
+    }
+}
+
+int main() {
+    
+    int vet[]= {1,2,3,5,7,11,13,17,19,23};
+    int chave = 7;
+    int resultado = busca(vet, 0, 10-1, chave);
+
+    if(resultado == -1){
+        printf("Chave não encontrada.");
+    }
+    else{
+        printf("Chave encontrada no índice %d.", resultado+1);
+    }
+    return 0;
+}
+
+#include <stdio.h>
+//iterativa
+int busca(int vet[], int inicio, int fim, int chave){
+    while(inicio<=fim){
+        int meio = (inicio+fim)/2; //define o meio
+        if (vet[meio] == chave){
+            return meio; // caso a chave esteja no meio
+        } else if(chave < vet[meio]) { 
+            fim = meio -1; // ajusta o local de procura para a metade inferior do vetor
+        } else {
+            inicio = meio +1; // ajusta o local de procura para a metade superior do vetor
+        }
+    }
+}
+int main() {
+    
+    int vet[]= {1,2,3,5,7,11,13,17,19,23};
+    int chave = 7;
+    int resultado = busca(vet, 0, 10-1, chave);
+
+    if(resultado == -1){
+        printf("Chave não encontrada.");
+    }
+    else{
+        printf("Chave encontrada no índice %d.", resultado+1);
+    }
+    return 0;
+}
