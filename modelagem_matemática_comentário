@@ -1,0 +1,17 @@
+Método da Bisseção:
+O método da bisseção é um método simples e robusto para encontrar raízes de uma função. 
+Ele começa com um intervalo inicial [a, b] tal que f(a) e f(b) têm sinais opostos (o que implica que há pelo menos uma raiz no intervalo). 
+O método divide o intervalo pela metade e seleciona o subintervalo [a, c] ou [c, b] onde c é o ponto médio, que contém uma raiz. 
+Este processo é repetido até que o tamanho do intervalo seja menor que um valor de tolerância especificado. Matematicamente, o ponto médio c é calculado como:
+c=(a+b​)/2
+
+Método da Falsa Posição (Regula Falsi):
+O método da falsa posição é semelhante ao método da bisseção, mas em vez de dividir o intervalo pela metade, ele calcula o próximo ponto como o ponto onde a 
+linha que passa por f(a) e f(b) cruza o eixo x. Isso pode proporcionar uma convergência mais rápida se a função for aproximadamente linear no intervalo. 
+Matematicamente, o próximo ponto c é calculado como:
+c=a− ((b-a)*f(a))/f(b)-f(a)
+
+Método de Newton-Raphson: O método de Newton-Raphson é um método iterativo para encontrar raízes de uma função. 
+Ele começa com um palpite inicial x e encontra a próxima aproximação usando a tangente da função no ponto atual. 
+A raiz da tangente é tomada como a próxima aproximação. Matematicamente, a próxima aproximação x é calculada como:
+x novo = x atual - f(x atual)/f'(x atual)
