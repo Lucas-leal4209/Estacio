@@ -1,0 +1,90 @@
+import sympy as sp
+
+# Definindo as funções para os métodos
+def bisection(f, a, b, tol=1e-6):
+    """
+    Método da bisseção.
+    """
+    c = a
+    while ((b-a) >= tol):
+        # Encontrando o ponto médio
+        c = (a+b)/2
+
+        # Verificando se o ponto médio é raiz
+        if f(c) == 0.0:
+            break
+
+        # Decidindo o lado para o qual repetir os passos
+        if f(c)*f(a) < 0:
+            b = c
+        else:
+            a = c
+    return c
+
+def false_position(f, a, b, tol=1e-6):
+    """
+    Método da falsa posição.
+    """
+    c = a
+    while ((b-a) >= tol):
+        # Valor de c
+        c = a - ((b-a) * f(a))/(f(b) - f(a))
+
+        # Verificando se c é raiz
+        if f(c) == 0.0:
+            break
+
+        # Decidindo o lado para o qual repetir os passos
+        if f(c)*f(a) < 0:
+            b = c
+        else:
+            a = c
+    return c
+
+def newton_raphson(f, x, tol=1e-6):
+    """
+    Método de Newton-Raphson.
+    """
+    F = sp.lambdify(x, f, "numpy")
+    F_prime = sp.lambdify(x, sp.diff(f, x), "numpy")
+    while abs(F(x)) > tol:
+        x = x - F(x)/F_prime(x)
+    return x
+
+# Função principal
+def main():
+    """
+    Função principal.
+    """
+    # Definindo a variável simbólica
+    x = sp.symbols('x')
+
+    # Solicitando a função do usuário
+    func = input("Digite a função: ")
+    f = sp.sympify(func)
+
+    # Solicitando o método do usuário
+    print("Escolha o método:")
+    print("1. Bisseção")
+    print("2. Falsa Posição")
+    print("3. Newton-Raphson")
+    method_choice = int(input("Digite o número correspondente ao método: "))
+
+    # Solicitando o intervalo ou ponto inicial do usuário
+    a = float(input("Digite o ponto ou limite inferior do intervalo: "))
+    b = None
+    if method_choice != 3:
+        b = float(input("Digite o limite superior do intervalo: "))
+
+    # Calculando a raiz
+    if method_choice == 1:
+        root = bisection(sp.lambdify(x, f, "numpy"), a, b)
+    elif method_choice == 2:
+        root = false_position(sp.lambdify(x, f, "numpy"), a, b)
+    elif method_choice == 3:
+        root = newton_raphson(f, a)
+
+    print("A raiz é: ", root)
+
+if __name__ == "__main__":
+    main()
