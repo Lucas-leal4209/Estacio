@@ -1,90 +1,105 @@
 import sympy as sp
 
-# Definindo as funções para os métodos
-def bisection(f, a, b, tol=1e-6):
+#método da bisecção
+def bisection(f, a, b, max_iter=100):
     """
     Método da bisseção.
     """
     c = a
-    while ((b-a) >= tol):
-        # Encontrando o ponto médio
-        c = (a+b)/2
+    iterations = 0
+    while ((b - a) >= 0.05 and iterations < max_iter):
+       # ponto médio
+        c = (a + b) / 2
+        iterations += 1
 
-        # Verificando se o ponto médio é raiz
+        # se ponto médio é raiz
         if f(c) == 0.0:
             break
 
-        # Decidindo o lado para o qual repetir os passos
-        if f(c)*f(a) < 0:
+        # decidindo o lado para o qual repetir os passos
+        if f(c) * f(a) < 0:
             b = c
         else:
             a = c
-    return c
+    return c, iterations
 
-def false_position(f, a, b, tol=1e-6):
+#falsa posição
+def false_position(f, a, b, max_iter=100):
     """
     Método da falsa posição.
     """
     c = a
-    while ((b-a) >= tol):
-        # Valor de c
-        c = a - ((b-a) * f(a))/(f(b) - f(a))
+    iterations = 0
+    while ((b - a) >= 0.05 and iterations < max_iter):
+        # valor de c
+        c = a - ((b - a) * f(a)) / (f(b) - f(a))
+        iterations += 1
 
-        # Verificando se c é raiz
+        # verificando se c é raiz
         if f(c) == 0.0:
             break
 
-        # Decidindo o lado para o qual repetir os passos
-        if f(c)*f(a) < 0:
+        # decidindo o lado para o qual repetir os passos
+        if f(c) * f(a) < 0:
             b = c
         else:
             a = c
-    return c
+    return c, iterations
 
-def newton_raphson(f, x, tol=1e-6):
+#newton raphson
+def newton_raphson(f, x0, max_iter=100):
     """
     Método de Newton-Raphson.
     """
-    F = sp.lambdify(x, f, "numpy")
-    F_prime = sp.lambdify(x, sp.diff(f, x), "numpy")
-    while abs(F(x)) > tol:
-        x = x - F(x)/F_prime(x)
-    return x
+    x = sp.symbols('x')
+    F = sp.lambdify(x, f, "sympy")
+    F_prime = sp.lambdify(x, sp.diff(f, x), "sympy")
+    iterations = 0
+    x_n = x0
+    while abs(F(x_n)) > 0.05 and iterations < max_iter:
+        x_n = x_n - F(x_n) / F_prime(x_n)
+        iterations += 1
+    return x_n, iterations
 
 # Função principal
 def main():
     """
     Função principal.
     """
-    # Definindo a variável simbólica
+    # símbolo da variável é x
     x = sp.symbols('x')
 
-    # Solicitando a função do usuário
+    # pede a função do usuário
     func = input("Digite a função: ")
     f = sp.sympify(func)
 
-    # Solicitando o método do usuário
+    # pede o método do usuário
     print("Escolha o método:")
     print("1. Bisseção")
     print("2. Falsa Posição")
     print("3. Newton-Raphson")
     method_choice = int(input("Digite o número correspondente ao método: "))
 
-    # Solicitando o intervalo ou ponto inicial do usuário
+    # pede o intervalo ou ponto inicial do usuário
     a = float(input("Digite o ponto ou limite inferior do intervalo: "))
     b = None
     if method_choice != 3:
         b = float(input("Digite o limite superior do intervalo: "))
 
-    # Calculando a raiz
+    # pede o número máximo de iterações
+    max_iter_input = input("Digite o número máximo de iterações (padrão 100): ")
+    max_iter = int(max_iter_input) if max_iter_input else 100
+
+    # calculando a raiz
     if method_choice == 1:
-        root = bisection(sp.lambdify(x, f, "numpy"), a, b)
+        root, iterations = bisection(sp.lambdify(x, f, "sympy"), a, b, max_iter)
     elif method_choice == 2:
-        root = false_position(sp.lambdify(x, f, "numpy"), a, b)
+        root, iterations = false_position(sp.lambdify(x, f, "sympy"), a, b, max_iter)
     elif method_choice == 3:
-        root = newton_raphson(f, a)
+        root, iterations = newton_raphson(f, a, max_iter)
 
     print("A raiz é: ", root)
+    print("Número de iterações: ", iterations)
 
 if __name__ == "__main__":
     main()
