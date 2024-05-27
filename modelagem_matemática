@@ -1,3 +1,18 @@
+#integrantes do grupo
+
+##########################################
+#Lucas Pedro Ferreira Leal Silva - 202204190141
+
+#Pedro Henrique Ribeiro Gomez - 202202936431
+
+#Miguel Boschini Mattos - 202203394207
+
+#Leonardo de Oliveira Silva - 202202424188
+
+#João Felipe dos Santos Silva - 202001566732
+##########################################
+
+
 import sympy as sp
 
 #método da bisecção
