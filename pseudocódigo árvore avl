@@ -1,0 +1,44 @@
+função removerAVL(raiz, valor):
+    se raiz == nulo:
+        retornar nulo // Valor não encontrado, árvore permanece inalterada
+
+    // Primeiro, realizar a remoção normal de um nó em uma árvore binária de busca
+    se valor < raiz.valor:
+        raiz.filhoEsquerdo = removerAVL(raiz.filhoEsquerdo, valor)
+    senão se valor > raiz.valor:
+        raiz.filhoDireito = removerAVL(raiz.filhoDireito, valor)
+    senão:
+        // Nó encontrado
+        se raiz.filhoEsquerdo == nulo ou raiz.filhoDireito == nulo:
+            // O nó tem zero ou um filho
+            se raiz.filhoEsquerdo != nulo:
+                raiz = raiz.filhoEsquerdo
+            senão:
+                raiz = raiz.filhoDireito
+        senão:
+            // O nó tem dois filhos
+            substituto = encontrarMinimo(raiz.filhoDireito)
+            raiz.valor = substituto.valor
+            raiz.filhoDireito = removerAVL(raiz.filhoDireito, substituto.valor)
+
+    se raiz == nulo:
+        retornar raiz
+
+    // Atualizar a altura do nó atual
+    atualizarAltura(raiz)
+
+    // Balancear o nó atual
+    balanceamento = obterFatorDeBalanceamento(raiz)
+
+    // Caso 1: Desbalanceado para a esquerda
+    se balanceamento > 1:
+        se obterFatorDeBalanceamento(raiz.filhoEsquerdo) >= 0:
+            // Rotação simples à direita
+            retornar rotacaoDireita(raiz)
+        senão:
+            // Rotação dupla à direita
+            raiz.filhoEsquerdo = rotacaoEsquerda(raiz.filhoEsquerdo)
+            retornar rotacaoDireita(raiz)
+
+    // Caso 2: Desbalanceado para a direita
+    se balanceamento < -1:
