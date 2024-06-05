@@ -1,18 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-// algoritmo merge sort recursivo
-void mergeSort(int vetor[], int inicio, int fim) {
-    if (inicio < fim) {
-        int meio = inicio + (fim - inicio) / 2;
-        // para a esquerda
-        mergeSort(vetor, inicio, meio);
-        // para a direita
-        mergeSort(vetor, meio + 1, fim);
-        // une as duas metades ja ordenadas
-        merge(vetor, inicio, meio, fim);
-    }
-}
+
 // junta as duas metades do vetor após a ordenação
 void merge(int vetor[], int inicio, int meio, int fim) {
     int z, x, c;
@@ -29,7 +18,6 @@ void merge(int vetor[], int inicio, int meio, int fim) {
     for (x = 0; x < n2; x++)
         direita[x] = vetor[meio + 1 + x];
 
-
     // junta os dois temporarios no original
     z = 0;
     x = 0;
@@ -44,6 +32,7 @@ void merge(int vetor[], int inicio, int meio, int fim) {
         }
         c++;
     }
+
     // copia os elementos da esquerda e da direita, caso haja algum ainda
     while (z < n1) {
         vetor[c] = esquerda[z];
@@ -56,10 +45,25 @@ void merge(int vetor[], int inicio, int meio, int fim) {
         x++;
         c++;
     }
+
     // libera a memoria dos vetores temporarios
     free(esquerda);
     free(direita);
 }
+
+// algoritmo merge sort recursivo
+void mergeSort(int vetor[], int inicio, int fim) {
+    if (inicio < fim) {
+        int meio = inicio + (fim - inicio) / 2;
+        // para a esquerda
+        mergeSort(vetor, inicio, meio);
+        // para a direita
+        mergeSort(vetor, meio + 1, fim);
+        // une as duas metades ja ordenadas
+        merge(vetor, inicio, meio, fim);
+    }
+}
+
 // algoritmo insertionSort
 void insertionSort(int vetor[], int n) {
     int r, chave, t;
@@ -81,6 +85,7 @@ void vetorAleatorio(int vetor[], int tamanho) {
         vetor[i] = rand() % 1000000;
     }
 }
+
 // mede o tempo da funcao insertionSort
 double medir_tempo_insertion(void (*sort_function)(int[], int), int vetor[], int n) {
     clock_t inicio, fim;
@@ -89,6 +94,7 @@ double medir_tempo_insertion(void (*sort_function)(int[], int), int vetor[], int
     fim = clock();
     return ((double)(fim - inicio)) / CLOCKS_PER_SEC;
 }
+
 // mede o tempo da funcao mergeSort
 double medir_tempo_merge(void (*sort_function)(int[], int, int), int vetor[], int l, int r) {
     clock_t inicio, fim;
@@ -97,8 +103,10 @@ double medir_tempo_merge(void (*sort_function)(int[], int, int), int vetor[], in
     fim = clock();
     return ((double)(fim - inicio)) / CLOCKS_PER_SEC;
 }
+
 // gera o tamanho dos vetores que serao usados
 int main() {
+    srand(time(NULL)); // Inicializa a semente para o gerador de números aleatórios
     int tamanhos[] = {1000, 10000, 100000, 1000000};
     int n_tamanhos = sizeof(tamanhos) / sizeof(tamanhos[0]);
 
