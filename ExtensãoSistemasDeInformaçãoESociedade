@@ -1,0 +1,89 @@
+#esse código não foi projetado e configurado para funcionar, é apenas um exemplo para o projeto de extensão
+#202204190141 - Lucas Pedro Ferreira Leal Silva
+
+#############################################################################################################
+
+
+pip install SpeechRecognition nltk spacy transformers
+pip install torch torchvision
+pip install pandas
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import speech_recognition as sr
+import pandas as pd
+
+def load_offensive_terms(filename):
+    """carregar termos ofensivos de um arquivo csv."""
+    try:
+        df = pd.read_csv(filename, header=None)
+        terms = df[0].tolist()
+        return [term.lower() for term in terms]
+    except Exception as e:
+        print(f"erro ao carregar termos ofensivos: {e}")
+        return []
+
+def recognize_speech():
+    """reconhecer fala e converter em texto."""
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("ajustando para o ruído ambiente...")
+        recognizer.adjust_for_ambient_noise(source)
+        print("ouvindo...")
+        audio = recognizer.listen(source)
+
+    try:
+        text = recognizer.recognize_google(audio)
+        print(f"texto reconhecido: {text}")
+        return text
+    except sr.UnknownValueError:
+        print("não foi possível entender o áudio")
+    except sr.RequestError as e:
+        print(f"erro com o serviço de reconhecimento de fala: {e}")
+
+def contains_offensive_language(text, offensive_terms):
+    """verificar se o texto contém termos ofensivos."""
+    words = text.lower().split()
+    for term in offensive_terms:
+        if term in words:
+            return True
+    return False
+
+def send_email(subject, body, to_email):
+    """enviar um e-mail para o RH com a ocorrência."""
+    from_email = "seuemail@exemplo.com"  # Substitua pelo seu e-mail
+    password = "suasenha"  # Substitua pela sua senha
+
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.exemplo.com', 587)  # Substitua pelo servidor SMTP e porta apropriados
+        server.starttls()
+        server.login(from_email, password)
+        text = msg.as_string()
+        server.sendmail(from_email, to_email, text)
+        server.quit()
+        print("e-mail enviado com sucesso!")
+    except Exception as e:
+        print(f"erro ao enviar e-mail: {e}")
+
+def recognize_and_check():
+    """reconhecer fala, verificar linguagem ofensiva e relatar se encontrado."""
+    offensive_terms = load_offensive_terms('offensive_terms.csv')
+    text = recognize_speech()
+    if text:
+        if contains_offensive_language(text, offensive_terms):
+            subject = "Ocorrência de Linguagem Ofensiva"
+            body = f"foi detectada uma linguagem ofensiva no seguinte texto:\n\n{text}"
+            send_email(subject, body, "extensaoRH@modelo.com")
+        else:
+            print("nenhuma linguagem ofensiva detectada")
+
+if __name__ == "__main__":
+    recognize_and_check()
