@@ -1,0 +1,62 @@
+#include <SPI.h>
+#include <MFRC522.h>
+#include <Adafruit_Fingerprint.h>
+#include <Servo.h>
+
+#define RST_PIN 9
+#define SS_PIN 10
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // RFID
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);  // Sensor biométrico
+Servo myservo;  // Servo para tranca
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();      // Inicia o barramento SPI
+  mfrc522.PCD_Init();   // Inicia o módulo RFID
+  finger.begin(57600);  // Inicia o sensor de impressão digital
+  myservo.attach(9);  // Servo conectado ao pino 9
+}
+
+void loop() {
+  if (checkFingerprint()) { // Se a biometria for validada
+    unlockDoor();
+  }
+  
+  if (checkRFID()) { // Se o RFID for validado
+    unlockDoor();
+  }
+}
+
+bool checkRFID() {
+  if (!mfrc522.PICC_IsNewCardPresent()) return false;
+  if (!mfrc522.PICC_ReadCardSerial()) return false;
+  
+  // Checa se o UID corresponde a uma tag autorizada
+  String uid = "";
+  for (byte i = 0; i < mfrc522.uid.size; i++) {
+    uid += String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+    uid += String(mfrc522.uid.uidByte[i], HEX);
+  }
+  
+  if (uid == "autorizado_UID") {
+    return true;
+  }
+  return false;
+}
+
+bool checkFingerprint() {
+  if (finger.getImage() != FINGERPRINT_OK) return false;
+  if (finger.image2Tz() != FINGERPRINT_OK) return false;
+  if (finger.fingerFastSearch() != FINGERPRINT_OK) return false;
+
+  if (finger.fingerID == valid_fingerID) {
+    return true;
+  }
+  return false;
+}
+
+void unlockDoor() {
+  myservo.write(90);  // Abre a tranca
+  delay(5000);        // Mantém aberta por 5 segundos
+  myservo.write(0);   // Fecha a tranca
+}
